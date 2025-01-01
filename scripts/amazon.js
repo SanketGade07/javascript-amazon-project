@@ -725,7 +725,7 @@ products.forEach((product) => {
 
           <div class="product-spacer"></div>
 
-          <div class="added-to-cart">
+          <div class="added-to-cart js-added-to-cart-${product.id}">
             <img src="images/icons/checkmark.png">
             Added
           </div>
@@ -771,8 +771,9 @@ function addToCart(button) {
 
   button.addEventListener('click', () => {
 
-   
+  
     const productId = button.dataset.productId;
+    addedMsgCheckmark(productId);
     const quantity= addQuantityByDropdown(productId);
 
 
@@ -806,4 +807,16 @@ function addQuantityByDropdown(productId){
   return quantity;
 }
 
+let timeoutId;
+function addedMsgCheckmark(productId){
+  const addedMsgDiv = document.querySelector(`.js-added-to-cart-${productId}`);
+  addedMsgDiv.style.opacity=1;
+ 
+ 
+  clearTimeout(timeoutId);
+  timeoutId=setTimeout(()=>{
+   addedMsgDiv.style.opacity=0;
+ 
+  },5000)
+  }
 
