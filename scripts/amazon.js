@@ -686,7 +686,7 @@ products.forEach((product) => {
           </div>
 
           <div class="product-quantity-container">
-            <select>
+            <select class="js-quantity-selector-${product.id}">
               <option selected value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -713,6 +713,7 @@ products.forEach((product) => {
         </div>`
 
 
+      
   productsGridHtml += html;
 })
 
@@ -722,16 +723,17 @@ productGridDiv.innerHTML = productsGridHtml;
 
 const addCartBtns = document.querySelectorAll('.js-add-to-cart-button');
 addCartBtns.forEach((button) => {
+  
   addToCart(button);
 
 
 })
 
-function isProductInCart(productId) {
+function isProductInCart(productId,quantity) {
 
   for (let i = 0; i < cart.length; i++) {
     if (cart[i].id === productId) {
-      cart[i]['quantity']++;
+      cart[i]['quantity']+=quantity;
 
       return true;
     }
@@ -745,21 +747,25 @@ function isProductInCart(productId) {
 function addToCart(button) {
 
   button.addEventListener('click', () => {
+
+   
     const productId = button.dataset.productId;
+    const quantity= addQuantityByDropdown(productId);
 
 
-    let productExist = isProductInCart(productId);
+    let productExist = isProductInCart(productId,quantity);
     if (!productExist) {
 
       cart.push({
         id: productId,
-        quantity: 1
+        quantity:quantity
       });
 
 
 
     }
     updateCartTotalQuantity();
+    console.log(cart)
   })
 }
 
@@ -767,5 +773,14 @@ function updateLocalStorage() {
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
+function addQuantityByDropdown(productId){
+   
+ const  dropdownElement = document.querySelector(`.js-quantity-selector-${productId}`);
+ const quantity = parseInt(dropdownElement.value);
+ 
+
+  
+  return quantity;
+}
 
 
