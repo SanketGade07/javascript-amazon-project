@@ -71,7 +71,7 @@ addCartBtns.forEach((button) => {
 
 
 })
-function updateCartTotalQuantity(){
+export function updateCartTotalQuantity(){
   let TotalQuantity=0;
   cart.forEach((product)=>{
       let quantity=product.quantity;
@@ -87,7 +87,7 @@ function updateLocalStorage() {
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-function addQuantityByDropdown(productId){
+export function addQuantityByDropdown(productId){
    
  const  dropdownElement = document.querySelector(`.js-quantity-selector-${productId}`);
  const quantity = parseInt(dropdownElement.value);
@@ -98,7 +98,7 @@ function addQuantityByDropdown(productId){
 }
 
 let timeoutId;
-function addedMsgCheckmark(productId){
+export function addedMsgCheckmark(productId){
   const addedMsgDiv = document.querySelector(`.js-added-to-cart-${productId}`);
   addedMsgDiv.style.opacity=1;
  

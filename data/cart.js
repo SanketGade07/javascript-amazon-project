@@ -1,3 +1,6 @@
+import{addedMsgCheckmark,addQuantityByDropdown,updateCartTotalQuantity} from '../scripts/amazon.js'
+
+
 export const cart=[  ];
 
 
