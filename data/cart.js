@@ -1,7 +1,10 @@
-import{addedMsgCheckmark,addQuantityByDropdown,updateCartTotalQuantity} from '../scripts/amazon.js'
+import {addedMsgCheckmark,updateCartTotalQuantity,addQuantityByDropdown} from '../scripts/amazon.js'
+import { products } from './products.js';
+import {cart} from './cart-data.js'
+// import { renderOrderSummary } from '../scripts/checkout.js';
 
 
-export const cart=[  ];
+
 
 
 
@@ -20,9 +23,12 @@ export function isProductInCart(productId,quantity) {
 
 }
 
+
+
 export function addToCart(button) {
 
     button.addEventListener('click', () => {
+      
   
     
       const productId = button.dataset.productId;
@@ -42,9 +48,29 @@ export function addToCart(button) {
   
       }
       updateCartTotalQuantity();
+  
+
+    
+      
       
     })
+    
+
+    
+    
+
   }
+  
+export function updateLocalStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+  }
+
+
+
+
+
+
 
 
 
