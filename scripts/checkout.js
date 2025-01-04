@@ -18,7 +18,7 @@ import { products } from "../data/products.js";
         products.forEach(product=>{
             
             
-        cart.forEach((cartItem)=>{
+        cart.forEach((cartItem,index)=>{
             if(product.id===cartItem.id){
                 let html =`
              <div class="cart-item-container">
@@ -57,7 +57,7 @@ import { products } from "../data/products.js";
                         <div class="delivery-option">
                           <input type="radio" checked
                             class="delivery-option-input"
-                            name="delivery-option-1">
+                            name="delivery-option-${index}">
                           <div>
                             <div class="delivery-option-date">
                               Tuesday, June 21
@@ -70,7 +70,7 @@ import { products } from "../data/products.js";
                         <div class="delivery-option">
                           <input type="radio"
                             class="delivery-option-input"
-                            name="delivery-option-1">
+                            name="delivery-option-${index}">
                           <div>
                             <div class="delivery-option-date">
                               Wednesday, June 15
@@ -83,7 +83,7 @@ import { products } from "../data/products.js";
                         <div class="delivery-option">
                           <input type="radio"
                             class="delivery-option-input"
-                            name="delivery-option-1">
+                            name="delivery-option-${index}">
                           <div>
                             <div class="delivery-option-date">
                               Monday, June 13
