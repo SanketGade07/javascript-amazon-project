@@ -11,4 +11,11 @@ if(!cart){
     ]
 
 }
+
+
+export function updateLocalStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+  }
+
    

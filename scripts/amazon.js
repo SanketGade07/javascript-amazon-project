@@ -1,6 +1,6 @@
 import { products } from "../data/products.js";
-import { isProductInCart,addToCart, updateLocalStorage} from "../data/cart.js";
-import {cart} from "../data/cart-data.js"
+import { isProductInCart,addToCart} from "../data/cart.js";
+import {cart,updateLocalStorage} from "../data/cart-data.js"
 
 
 

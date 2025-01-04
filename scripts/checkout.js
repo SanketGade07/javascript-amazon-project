@@ -1,5 +1,6 @@
 import { cart } from "../data/cart-data.js";
 import { products } from "../data/products.js";
+import { updateLocalStorage } from "../data/cart-data.js";
 
 
 
@@ -15,10 +16,10 @@ import { products } from "../data/products.js";
         
     
         let orderSummaryHtml=''
-        products.forEach(product=>{
+        cart.forEach(cartItem=>{
             
             
-        cart.forEach((cartItem,index)=>{
+        products.forEach((product,index)=>{
             if(product.id===cartItem.id){
                 let html =`
              <div class="cart-item-container">
@@ -44,7 +45,7 @@ import { products } from "../data/products.js";
                           <span class="update-quantity-link link-primary">
                             Update
                           </span>
-                          <span class="delete-quantity-link link-primary">
+                          <span class="delete-quantity-link link-primary js-delete-quantity">
                             Delete
                           </span>
                         </div>
@@ -107,6 +108,31 @@ import { products } from "../data/products.js";
     
         const orderSummaryDiv=document.querySelector('.js-order-summary');
         orderSummaryDiv.innerHTML=orderSummaryHtml;
+
+    const deleteBtns=document.querySelectorAll('.js-delete-quantity')
+    deleteBtns.forEach((deleteBtn,index)=>{
+    
+      deleteBtn.addEventListener('click',()=>{
+        console.log(cart)
+        console.log(index)
+        cart.splice(index,1);
+        updateLocalStorage()
+        console.log(cart)
+        renderOrderSummary();
+        
+        
+      })
+
+    })
     }
+
+  
+
+
+      
+    
+
+
+    
     
     

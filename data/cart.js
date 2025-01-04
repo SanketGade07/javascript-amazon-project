@@ -44,7 +44,7 @@ export function addToCart(button) {
           quantity:quantity
         });
   
-  
+      
   
       }
       updateCartTotalQuantity();
@@ -61,10 +61,6 @@ export function addToCart(button) {
 
   }
   
-export function updateLocalStorage() {
-    localStorage.setItem('cart', JSON.stringify(cart));
-    
-  }
 
 
 
