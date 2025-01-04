@@ -1,6 +1,7 @@
 import { cart } from "../data/cart-data.js";
 import { products } from "../data/products.js";
 import { updateLocalStorage } from "../data/cart-data.js";
+import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js'
 
 
 
@@ -14,7 +15,14 @@ import { updateLocalStorage } from "../data/cart-data.js";
     
      export function renderOrderSummary(){
         
-    
+        const today=dayjs();
+        const deliveryDateOne= today.add(10,'days').format('dddd, MMMM D');
+        const deliveryDateTwo =today.add(4,'days').format('dddd, MMMM D')
+        const deliveryDateThree=today.add(2,'days').format('dddd, MMMM D')
+
+        
+        
+
         let orderSummaryHtml=''
         cart.forEach(cartItem=>{
             
@@ -24,7 +32,7 @@ import { updateLocalStorage } from "../data/cart-data.js";
                 let html =`
              <div class="cart-item-container">
                     <div class="delivery-date">
-                      Delivery date: Tuesday, June 21
+                      Delivery date: ${deliveryDateOne}
                     </div>
         
                     <div class="cart-item-details-grid">
@@ -61,7 +69,7 @@ import { updateLocalStorage } from "../data/cart-data.js";
                             name="delivery-option-${index}">
                           <div>
                             <div class="delivery-option-date">
-                              Tuesday, June 21
+                              ${deliveryDateOne}
                             </div>
                             <div class="delivery-option-price">
                               FREE Shipping
@@ -74,7 +82,7 @@ import { updateLocalStorage } from "../data/cart-data.js";
                             name="delivery-option-${index}">
                           <div>
                             <div class="delivery-option-date">
-                              Wednesday, June 15
+                              ${deliveryDateTwo}
                             </div>
                             <div class="delivery-option-price">
                               $4.99 - Shipping
@@ -87,7 +95,7 @@ import { updateLocalStorage } from "../data/cart-data.js";
                             name="delivery-option-${index}">
                           <div>
                             <div class="delivery-option-date">
-                              Monday, June 13
+                            ${deliveryDateThree}
                             </div>
                             <div class="delivery-option-price">
                               $9.99 - Shipping
@@ -113,11 +121,9 @@ import { updateLocalStorage } from "../data/cart-data.js";
     deleteBtns.forEach((deleteBtn,index)=>{
     
       deleteBtn.addEventListener('click',()=>{
-        console.log(cart)
-        console.log(index)
         cart.splice(index,1);
         updateLocalStorage()
-        console.log(cart)
+        
         renderOrderSummary();
         
         
