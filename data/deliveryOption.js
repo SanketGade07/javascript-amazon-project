@@ -1,17 +1,17 @@
-const deliveryOption =[
+export const deliveryOptions =[
     {
         deliveryId : '1',
-        delivaryDays:10,
+        deliveryDays:10,
         priceCents: 0
     },
     {
-        id : '2',
-        delivaryDays:4,
+        deliveryId : '2',
+        deliveryDays:4,
         priceCents: 499
     },
     {
-        id : '3',
-        delivaryDays:2,
+        deliveryId : '3',
+        deliveryDays:2,
         priceCents: 999
     }
 
