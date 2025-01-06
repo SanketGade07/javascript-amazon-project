@@ -54,14 +54,14 @@ export function updateOrderPriceSummary(){
  function updateTotalBeforeTax(){
     totalBeforeTax=parseFloat((totalCartPrice/100).toFixed(2)) +shippingTotalPrice;
     const beforeTaxDiv=document.querySelector('.js-before-tax');
-    beforeTaxDiv.innerHTML=`$${totalBeforeTax}`;
+    beforeTaxDiv.innerHTML=`$${totalBeforeTax.toFixed(2)}`;
 
 }
 
 function updateEstimatedTax(){
     estimatedTax=parseFloat(((10/100)*totalBeforeTax).toFixed(2));
     const estimatedTaxDiv=document.querySelector('.js-estimated-tax');
-    estimatedTaxDiv.innerHTML=`$${estimatedTax}`;
+    estimatedTaxDiv.innerHTML=`$${estimatedTax.toFixed(2)}`;
 
 
 }
