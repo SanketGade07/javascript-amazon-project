@@ -2,6 +2,7 @@ import {addedMsgCheckmark,updateCartTotalQuantity,addQuantityByDropdown} from '.
 import { products } from './products.js';
 import {cart} from './cart-data.js'
 // import { renderOrderSummary } from '../scripts/checkout.js';
+// import { updateItemsPrice } from '../scripts/orderPriceSummary.js';
 
 
 
@@ -44,6 +45,7 @@ export function addToCart(button) {
           quantity:quantity,
           deliveryOptionId:'1'
         });
+        
   
       
   

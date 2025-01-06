@@ -3,8 +3,10 @@ import { products } from "../data/products.js";
 import { updateLocalStorage } from "../data/cart-data.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js'
 import { deliveryOptions } from "../data/deliveryOption.js";
+import { updateOrderPriceSummary } from "./orderPriceSummary.js";
+ 
 
-
+updateOrderPriceSummary()
 renderOrderSummary();
 
 export function renderOrderSummary() {
@@ -93,6 +95,10 @@ export function renderOrderSummary() {
       updateLocalStorage()
 
       renderOrderSummary();
+      updateOrderPriceSummary()
+     
+      
+
 
 
     })
@@ -116,6 +122,8 @@ export function renderOrderSummary() {
 
       })
       renderOrderSummary()
+      updateOrderPriceSummary()
+
     })
 
   })
@@ -139,6 +147,7 @@ export function renderOrderSummary() {
       })
 
       renderOrderSummary()
+      updateOrderPriceSummary()
     })
 
   })
@@ -161,6 +170,7 @@ export function renderOrderSummary() {
 
 
       renderOrderSummary()
+      updateOrderPriceSummary()
     })
 
 

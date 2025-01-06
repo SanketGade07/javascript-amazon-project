@@ -1,12 +1,13 @@
 import { products } from "../data/products.js";
 import { isProductInCart,addToCart} from "../data/cart.js";
 import {cart,updateLocalStorage} from "../data/cart-data.js"
+// import  updateItemsPrice  from "./orderPriceSummary.js";
 
 
 
 
 
-let productGridDiv=true;
+
  function renderIndexHtml(){
   let productsGridHtml = '';
   products.forEach((product) => {
@@ -66,7 +67,7 @@ let productGridDiv=true;
     productsGridHtml += html;
   })
   
-  productGridDiv = document.querySelector('.js-products-grid')
+  const productGridDiv = document.querySelector('.js-products-grid')
   
   productGridDiv.innerHTML = productsGridHtml;
   
@@ -81,6 +82,8 @@ addCartBtns.forEach((button) => {
   
   
     addToCart(button);
+    
+
 
   
   
