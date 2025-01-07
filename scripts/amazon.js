@@ -1,6 +1,7 @@
 import { products } from "../data/products.js";
 import { isProductInCart,addToCart} from "../data/cart.js";
 import {cart,updateLocalStorage} from "../data/cart-data.js"
+
 // import  updateItemsPrice  from "./orderPriceSummary.js";
 
 
@@ -13,7 +14,7 @@ import {cart,updateLocalStorage} from "../data/cart-data.js"
   products.forEach((product) => {
     let html;
   
-    html = `<div class="product-container" >
+    html = `<div class="product-container js-product-container" >
             <div class="product-image-container">
               <img class="product-image"
                 src="${product.image}">
@@ -138,6 +139,42 @@ export function addedMsgCheckmark(productId){
   },2000)
   }
 
+document.addEventListener('DOMContentLoaded',()=>{
+
+    let searchProducts = createSearchProducts();
+     
+    
+      searchFunctionality(searchProducts);
+    })
+    
+    function createSearchProducts(){
+      let index=-1;
+      const searchProducts=products.map(product=>{
+        const productContainer=document.getElementsByClassName('js-product-container');
+        
+        index++;
+        return {name : product.name.toLowerCase(),element:productContainer[index]}
+        
+      })
+      return searchProducts;
+    }
+    
+    function searchFunctionality(searchProducts){
+      const searchInputElement=document.querySelector('.js-search-bar');
+      searchInputElement.addEventListener('input',e=>{
+        const {value} =e.target
+        value.toLowerCase()
+        searchProducts.forEach(product => {
+          const isVisible= product.name.includes(value);
+          product.element.classList.toggle('hide',!isVisible)
+        });
+        
+        
+      })
+    
+    }
+    
+    
 
 
   
