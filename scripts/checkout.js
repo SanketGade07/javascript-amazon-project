@@ -1,13 +1,15 @@
 import { cart } from "../data/cart-data.js";
-import { products } from "../data/products.js";
+import { products ,loadProducts} from "../data/products.js";
 import { updateLocalStorage } from "../data/cart-data.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js'
 import { deliveryOptions } from "../data/deliveryOption.js";
 import { updateOrderPriceSummary } from "./orderPriceSummary.js";
  
-
+loadProducts(()=>{
 updateOrderPriceSummary()
 renderOrderSummary();
+})
+
 
 export function renderOrderSummary() {
   let dateString;
@@ -96,10 +98,6 @@ export function renderOrderSummary() {
 
       renderOrderSummary();
       updateOrderPriceSummary()
-     
-      
-
-
 
     })
 
@@ -132,10 +130,6 @@ export function renderOrderSummary() {
   deliveryOptionTwoDivs.forEach((deliveryOptionTwoDiv) => {
 
     deliveryOptionTwoDiv.addEventListener('click', () => {
-
-
-
-
       const cartItemId = deliveryOptionTwoDiv.dataset.cartItemId;
 
       cart.forEach((cartItem) => {

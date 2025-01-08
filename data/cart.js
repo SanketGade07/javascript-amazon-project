@@ -29,9 +29,6 @@ export function isProductInCart(productId,quantity) {
 export function addToCart(button) {
 
     button.addEventListener('click', () => {
-      
-  
-    
       const productId = button.dataset.productId;
       addedMsgCheckmark(productId);
       const quantity= addQuantityByDropdown(productId);
@@ -45,23 +42,9 @@ export function addToCart(button) {
           quantity:quantity,
           deliveryOptionId:'1'
         });
-        
-  
-      
-  
       }
-      updateCartTotalQuantity();
-  
-
-    
-      
-      
+      updateCartTotalQuantity();     
     })
-    
-
-    
-    
-
   }
   
 
