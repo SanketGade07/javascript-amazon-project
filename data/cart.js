@@ -12,7 +12,7 @@ import {cart} from './cart-data.js'
 export function isProductInCart(productId,quantity) {
 
   for (let i = 0; i < cart.length; i++) {
-    if (cart[i].id === productId) {
+    if (cart[i].productId=== productId) {
       cart[i]['quantity']+=quantity;
 
       return true;
@@ -38,7 +38,7 @@ export function addToCart(button) {
       if (!productExist) {
   
         cart.push({
-          id: productId,
+          productId: productId,
           quantity:quantity,
           deliveryOptionId:'1'
         });

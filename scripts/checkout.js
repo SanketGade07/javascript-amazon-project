@@ -35,12 +35,12 @@ export function renderOrderSummary() {
     products.forEach((product, index) => {
 
 
-      if (product.id === cartItem.id) {
+      if (product.id === cartItem.productId) {
 
 
         let html = `
              <div class="cart-item-container">
-                    <div class="delivery-date js-delivery-date-${cartItem.id}" >
+                    <div class="delivery-date js-delivery-date-${cartItem.productId}" >
                       ${dateString}
                     </div>
         
@@ -72,7 +72,7 @@ export function renderOrderSummary() {
                         <div class="delivery-options-title">
                           Choose a delivery option:
                         </div>
-                       ${renderDeliveryOptions(deliveryOptionId, cartItem.id)}
+                       ${renderDeliveryOptions(deliveryOptionId, cartItem.productId)}
                         
                       </div>
                     </div>
@@ -113,7 +113,7 @@ export function renderOrderSummary() {
       cart.forEach((cartItem) => {
 
 
-        if (cartItem.id === cartItemId) {
+        if (cartItem.productId === cartItemId) {
           cartItem.deliveryOptionId = '1'
           updateLocalStorage()
         }
@@ -134,7 +134,7 @@ export function renderOrderSummary() {
 
       cart.forEach((cartItem) => {
 
-        if (cartItem.id === cartItemId) {
+        if (cartItem.productId=== cartItemId) {
           cartItem.deliveryOptionId = '2'
           updateLocalStorage()
         }
@@ -156,7 +156,7 @@ export function renderOrderSummary() {
 
       cart.forEach((cartItem) => {
 
-        if (cartItem.id === cartItemId) {
+        if (cartItem.productId=== cartItemId) {
           cartItem.deliveryOptionId = '3'
           updateLocalStorage()
         }

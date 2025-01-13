@@ -10,7 +10,7 @@ export function updateOrderPriceSummary(){
       cart.forEach(cartItem => {
         products.forEach((product, index) => {
     
-          if (product.id === cartItem.id) {
+          if (product.id === cartItem.productId) {
             let cartItemPrice=0;
             if(cartItem.quantity>1){
                 cartItemPrice=cartItem.quantity*product.priceCents;
@@ -73,4 +73,26 @@ function updateOrderTotal(){
     orderTotalDiv.innerHTML=`$${orderTotal}`;
 
 }
+
+document.querySelector('.js-place-order-btn')
+    .addEventListener('click',async()=>{
+        const url='https://supersimplebackend.dev/orders';
+        const response=await fetch(url,{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json',
+            },
+                body: JSON.stringify({
+                    cart:cart
+                }
+                ),
+                
+        })
+        
+
+        const order =await response.json();
+        console.log(order)
+        
+
+    })
 
