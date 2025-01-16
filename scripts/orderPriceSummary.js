@@ -1,5 +1,6 @@
 import { products } from '../data/products.js';
-import {cart} from '../data/cart-data.js'
+import {cart} from '../data/cart-data.js';
+import { addToOrder } from '../data/orders.js';
 
 let totalCartPrice=0;
 let shippingTotalPrice=0
@@ -76,22 +77,23 @@ function updateOrderTotal(){
 
 document.querySelector('.js-place-order-btn')
     .addEventListener('click',async()=>{
-        const url='https://supersimplebackend.dev/orders';
-        const response=await fetch(url,{
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json',
-            },
-                body: JSON.stringify({
+        try{
+            const response=await fetch('https://supersimplebackend.dev/orders',{
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json',
+                },
+                body:JSON.stringify({
                     cart:cart
-                }
-                ),
-                
-        })
-        
-
-        const order =await response.json();
-        console.log(order)
+                }),
+            });
+            const order=await response.json();
+            addToOrder(order);
+        }
+        catch(err){
+            console.error(err);
+        }
+        window.location.href='orders.html';
         
 
     })
