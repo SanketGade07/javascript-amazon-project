@@ -11,12 +11,15 @@ renderOrderSummary();
 })
 
 
+   
+
+
 export function renderOrderSummary() {
   let dateString;
 
 
 
-  let orderSummaryHtml = ''
+ let orderSummaryHtml = '';
   cart.forEach(cartItem => {
 
     const deliveryOptionId = cartItem.deliveryOptionId;
@@ -172,7 +175,7 @@ export function renderOrderSummary() {
 }
 
 
-function renderDeliveryOptions(delivaryOptionId, cartItemId) {
+export function renderDeliveryOptions(delivaryOptionId, cartItemId) {
   const today = dayjs();
 
   let html = ''

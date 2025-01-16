@@ -1,6 +1,7 @@
-import { products } from '../data/products.js';
-import {cart} from '../data/cart-data.js';
+import { loadProducts, products } from '../data/products.js';
+import {cart, updateLocalStorage} from '../data/cart-data.js';
 import { addToOrder } from '../data/orders.js';
+import {  renderOrderSummary } from '../scripts/checkout.js';
 
 let totalCartPrice=0;
 let shippingTotalPrice=0
@@ -75,9 +76,11 @@ function updateOrderTotal(){
 
 }
 
-document.querySelector('.js-place-order-btn')
-    .addEventListener('click',async()=>{
-        try{
+const placeOrderBtn=document.getElementsByClassName('js-place-order-btn')[0];
+placeOrderBtn.addEventListener('click',async()=>{
+    
+    try{
+        
             const response=await fetch('https://supersimplebackend.dev/orders',{
                 method:'POST',
                 headers:{
@@ -89,6 +92,13 @@ document.querySelector('.js-place-order-btn')
             });
             const order=await response.json();
             addToOrder(order);
+            cart.length=0;
+            updateLocalStorage();
+            renderOrderSummary();
+            updateOrderPriceSummary();
+           
+            
+            
         }
         catch(err){
             console.error(err);

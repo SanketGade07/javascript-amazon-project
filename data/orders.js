@@ -1,7 +1,15 @@
 
-const orders =[];
+export const orders =JSON.parse(localStorage.getItem('orders')) || [];
 
 export function addToOrder(order){
+    
     orders.unshift(order);
-    console.log(orders);
+    saveToLocalStorage();
+   
+}
+
+
+
+function saveToLocalStorage(){
+    localStorage.setItem('orders', JSON.stringify(orders));
 }
